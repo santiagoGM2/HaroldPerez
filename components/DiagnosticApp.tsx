@@ -11,6 +11,7 @@ import type {
   DiagnosticResult,
   LeadData,
 } from "@/lib/types";
+import { BrandPane } from "./BrandPane";
 import { MiniHeader } from "./MiniHeader";
 import { IntroStep } from "./steps/IntroStep";
 import { QuizStep } from "./steps/QuizStep";
@@ -105,7 +106,6 @@ export function DiagnosticApp() {
     void fetchAnalysis(res, finalLead);
   }
 
-  // Transición suave entre pasos.
   const transition = { duration: reduce ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] };
   const stepVariants = {
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 10 },
@@ -114,53 +114,62 @@ export function DiagnosticApp() {
   };
 
   return (
-    <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-surface sm:h-[min(920px,94dvh)] sm:max-w-[640px] sm:rounded-[24px] sm:border sm:border-navy/[0.06] sm:shadow-card">
-      {/* Filo dorado superior de 3px: sello premium de la marca */}
-      <div className="h-[3px] w-full shrink-0 bg-gradient-to-r from-gold-deep via-gold to-gold-soft" />
+    <div className="flex h-full w-full overflow-hidden bg-surface">
+      {/* Panel de marca (solo computador) */}
+      <BrandPane />
 
-      {step !== "intro" && <MiniHeader />}
+      {/* Panel de contenido: el flujo del diagnóstico */}
+      <div className="relative flex h-full min-w-0 flex-1 flex-col bg-surface lg:border-l lg:border-gold/30">
+        {/* Filo dorado superior (celular y tablet) */}
+        <div className="h-[3px] w-full shrink-0 bg-gradient-to-r from-gold-deep via-gold to-gold-soft lg:hidden" />
 
-      <div
-        ref={scrollRef}
-        className="app-scroll relative min-h-0 flex-1 overflow-y-auto"
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={step}
-            variants={stepVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={transition}
-            className="min-h-full"
-          >
-            {step === "intro" && (
-              <IntroStep onStart={() => setStep("quiz")} />
-            )}
-            {step === "quiz" && (
-              <QuizStep
-                initialAnswers={answers}
-                onComplete={handleQuizComplete}
-                onExit={() => setStep("intro")}
-              />
-            )}
-            {step === "lead" && (
-              <LeadStep
-                initialLead={lead}
-                onSubmit={handleLeadSubmit}
-                onBack={() => setStep("quiz")}
-              />
-            )}
-            {step === "result" && result && (
-              <ResultStep
-                result={result}
-                lead={lead}
-                analysisLoading={analysisLoading}
-                analysisText={analysisText}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+        {/* Mini-header de marca (celular y tablet; en computador está el panel) */}
+        {step !== "intro" && (
+          <div className="lg:hidden">
+            <MiniHeader />
+          </div>
+        )}
+
+        <div
+          ref={scrollRef}
+          className="app-scroll relative min-h-0 flex-1 overflow-y-auto"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={step}
+              variants={stepVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={transition}
+              className="mx-auto min-h-full w-full max-w-[640px]"
+            >
+              {step === "intro" && <IntroStep onStart={() => setStep("quiz")} />}
+              {step === "quiz" && (
+                <QuizStep
+                  initialAnswers={answers}
+                  onComplete={handleQuizComplete}
+                  onExit={() => setStep("intro")}
+                />
+              )}
+              {step === "lead" && (
+                <LeadStep
+                  initialLead={lead}
+                  onSubmit={handleLeadSubmit}
+                  onBack={() => setStep("quiz")}
+                />
+              )}
+              {step === "result" && result && (
+                <ResultStep
+                  result={result}
+                  lead={lead}
+                  analysisLoading={analysisLoading}
+                  analysisText={analysisText}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
-import { Check, Gift, MessageCircle } from "lucide-react";
+import { Check, Gift } from "lucide-react";
 import { CTA } from "@/lib/content";
 import { buildWhatsappLink } from "@/lib/whatsapp";
 import type { StageKey } from "@/lib/types";
+import { WhatsAppIcon } from "../ui/WhatsAppIcon";
 
 // CTA final hacia WhatsApp. Panel azul marino para que el botón dorado sea
 // el elemento más prominente de toda la pantalla.
@@ -49,9 +50,10 @@ export function FinalCta({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`${CTA.button} por WhatsApp`}
         className="mt-6 flex w-full items-center justify-center gap-2.5 rounded-[13px] bg-gold px-6 py-4 text-[16px] font-bold tracking-tight text-navy-deep shadow-gold transition-all duration-300 ease-out-quint hover:-translate-y-px hover:bg-gold-soft active:translate-y-0 active:scale-[0.99]"
       >
-        <MessageCircle className="h-[20px] w-[20px]" strokeWidth={2.2} />
+        <WhatsAppIcon className="h-[22px] w-[22px]" />
         {CTA.button}
       </a>
 

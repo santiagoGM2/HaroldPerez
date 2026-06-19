@@ -39,8 +39,8 @@ export function IntroStep({ onStart }: { onStart: () => void }) {
       animate="show"
       className="px-7 py-10 sm:px-12 sm:py-12"
     >
-      {/* Header: presentación de Harold */}
-      <motion.div variants={block} className="flex items-center gap-4">
+      {/* Header: presentación de Harold (en computador vive en el panel lateral) */}
+      <motion.div variants={block} className="flex items-center gap-4 lg:hidden">
         <HaroldAvatar size={72} />
         <div className="min-w-0">
           <h1 className="font-display text-[20px] font-semibold leading-tight tracking-tight text-navy-deep">
@@ -52,7 +52,10 @@ export function IntroStep({ onStart }: { onStart: () => void }) {
         </div>
       </motion.div>
 
-      <motion.div variants={block} className="mt-7 h-px w-full bg-navy/[0.08]" />
+      <motion.div
+        variants={block}
+        className="mt-7 h-px w-full bg-navy/[0.08] lg:hidden"
+      />
 
       {/* Protagonista: eyebrow + titular grande + definición */}
       <motion.div variants={block} className="mt-8">
