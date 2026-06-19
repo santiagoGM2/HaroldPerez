@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokens de marca como variables CSS (para SVG y gradientes) */
+:root {
+  --navy: #1d3563;
+  --navy-deep: #14233f;
+  --blue: #3f5f9d;
+  --gold: #d4a64a;
+  --gold-deep: #9a7320;
+  --ink: #2e3a4f;
+  --cream: #fcfaf6;
+
+  color-scheme: light;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    /* La página no hace scroll completo: toda la experiencia vive en la card */
+    overflow: hidden;
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Fondo claro y limpio, estilo Apple: radial blanco arriba sobre un lineal */
+    background-color: #f4f6f9;
+    background-image:
+      radial-gradient(
+        130% 80% at 50% -14%,
+        rgba(255, 255, 255, 0.92) 0%,
+        rgba(255, 255, 255, 0) 48%
+      ),
+      radial-gradient(
+        100% 55% at 50% -6%,
+        rgba(63, 95, 157, 0.08) 0%,
+        rgba(63, 95, 157, 0) 50%
+      ),
+      linear-gradient(180deg, #f4f6f9 0%, #e9edf3 100%);
+  }
+
+  ::selection {
+    background-color: rgba(63, 95, 157, 0.16);
+    color: var(--navy-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Titulares con la familia display (Manrope), tracking ajustado estilo Apple */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Cifras tabulares para numeración y puntajes */
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Scrollbar discreto dentro de la card */
+  .app-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(29, 53, 99, 0.18) transparent;
+  }
+  .app-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  .app-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(29, 53, 99, 0.14);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .app-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(29, 53, 99, 0.26);
+  }
+
+  /* Carga elegante (shimmer) del análisis personalizado */
+  .skeleton-line {
+    background: linear-gradient(
+      90deg,
+      rgba(29, 53, 99, 0.06) 25%,
+      rgba(29, 53, 99, 0.12) 37%,
+      rgba(29, 53, 99, 0.06) 63%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

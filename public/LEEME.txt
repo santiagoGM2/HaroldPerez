@@ -1,0 +1,12 @@
+FOTO DE HAROLD
+==============
+
+Coloca aquí la foto real de Harold con el nombre exacto:
+
+    harold.webp
+
+Recomendaciones:
+- Formato .webp (también funciona .jpg/.png si renombras el archivo a harold.webp).
+- Cuadrada (por ejemplo 600x600 px), con el rostro centrado y bien iluminado.
+- Mientras este archivo no exista, la interfaz muestra un placeholder
+  elegante con las iniciales "HP" sobre fondo azul marino.
