@@ -5,7 +5,7 @@ import { HaroldAvatar } from "./HaroldAvatar";
 // Sostiene la presencia de Harold de forma persistente mientras el flujo
 // ocurre a la derecha. En celular no se muestra (el MiniHeader cumple ese rol).
 export function BrandPane() {
-  const pills = INTRO.startMicrocopy.split(" · ");
+  const pills = INTRO.startPoints;
 
   return (
     <aside className="relative hidden h-full w-[42%] max-w-[480px] shrink-0 flex-col justify-between overflow-hidden bg-gradient-to-br from-navy to-navy-deep p-10 text-white lg:flex xl:p-12">
@@ -46,7 +46,7 @@ export function BrandPane() {
         {pills.map((pill) => (
           <span
             key={pill}
-            className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-[11.5px] font-medium capitalize text-white/80"
+            className="rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[11.5px] font-medium text-white/80"
           >
             {pill}
           </span>

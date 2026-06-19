@@ -100,8 +100,7 @@ export function QuizStep({
             className="w-full"
           >
             {question.tag && (
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-navy/10 bg-navy/[0.03] px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-navy">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              <span className="mb-5 inline-flex items-center rounded-full border border-navy/12 bg-navy/[0.03] px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-navy-deep">
                 {question.tag}
               </span>
             )}

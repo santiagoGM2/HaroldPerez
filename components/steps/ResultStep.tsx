@@ -63,8 +63,7 @@ export function ResultStep({
         variants={item}
         className="overflow-hidden rounded-[20px] bg-gradient-to-br from-navy to-navy-deep p-6 text-white shadow-soft sm:p-7"
       >
-        <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-gold-soft">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+        <span className="inline-flex items-center rounded-full border border-gold/30 bg-gold/[0.12] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-gold-soft">
           PyME {result.stageKey}
         </span>
         <h2 className="mt-4 font-display text-[24px] font-medium leading-tight tracking-tightish text-white">

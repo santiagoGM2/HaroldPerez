@@ -138,19 +138,19 @@ export function IntroStep({ onStart }: { onStart: () => void }) {
                     {key}
                   </span>
                   <div className="pb-0.5">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                      <p className="text-[13.5px] font-semibold text-navy-deep">
+                    <div className="flex items-center gap-2.5">
+                      <p className="text-[14px] font-semibold text-navy-deep">
                         {stage.name}
                       </p>
-                      <span className="text-[13px] text-ink-soft">
-                        · {stage.title}
-                      </span>
                       {isGoal && (
                         <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-eyebrow text-gold-deep">
                           La meta
                         </span>
                       )}
                     </div>
+                    <p className="mt-0.5 text-[13px] font-medium text-navy/75">
+                      {stage.title}
+                    </p>
                     <p className="mt-1.5 text-[12.5px] leading-snug text-ink-soft">
                       {stage.description}
                     </p>
@@ -190,9 +190,16 @@ export function IntroStep({ onStart }: { onStart: () => void }) {
           {INTRO.startButton}
           <ArrowRight className="h-[18px] w-[18px] text-gold" strokeWidth={2.2} />
         </Button>
-        <p className="mt-3 text-center text-[12px] font-medium text-ink-faint">
-          {INTRO.startMicrocopy}
-        </p>
+        <div className="mt-3.5 flex items-center justify-center gap-3 text-[12px] font-medium text-ink-faint">
+          {INTRO.startPoints.map((point, i) => (
+            <span key={point} className="flex items-center gap-3">
+              {i > 0 && (
+                <span aria-hidden="true" className="h-3 w-px bg-navy/15" />
+              )}
+              {point}
+            </span>
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   );

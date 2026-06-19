@@ -82,7 +82,8 @@ export const INTRO = {
     "Toda empresa evoluciona por etapas. El destino siempre es la misma: convertirse en una PyME 4.0.",
   gift: "Te regalamos la metodología para convertir tu empresa en una PyME 4.0.",
   startButton: "Lo tengo claro, empezar mi diagnóstico",
-  startMicrocopy: "12 preguntas · 3 minutos · gratis",
+  // Puntos de confianza como lista (se separan con líneas finas, no con "·").
+  startPoints: ["12 preguntas", "3 minutos", "gratis"],
 };
 
 // --- Quiz ---
@@ -126,7 +127,10 @@ export const LEAD = {
     whatsapp: { label: "WhatsApp", placeholder: "+57 300 123 4567" },
     companySize: { label: "Tamaño de tu empresa", placeholder: "Selecciona una opción" },
   },
-  painQuick: { label: "¿Cuál es tu mayor dolor hoy?" },
+  painQuick: {
+    label: "¿Qué es lo que más te duele hoy?",
+    hint: "Elige todos los que apliquen",
+  },
   painDetail: {
     label: "Cuéntame un poco más",
     placeholder:
@@ -167,7 +171,7 @@ export const STAGE_TITLES: Record<string, string> = {
 
 // --- CTA final hacia WhatsApp ---
 export const CTA = {
-  eyebrow: "Asesoría gratuita · Sin compromiso",
+  eyebrow: "Asesoría gratuita, sin compromiso",
   title: "Convierte tu empresa en una PyME 4.0 en 90 días",
   subtitle:
     "En una sesión virtual de 30 minutos te entregamos el mapa exacto para tu empresa, gratis. Si decides hacerlo con nosotros, perfecto. Si no, te llevas la estrategia igual.",

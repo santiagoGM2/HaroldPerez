@@ -103,8 +103,12 @@ export function buildFallbackAnalysis(input: FallbackInput): string {
   const gapDim = pickByPriority(input.gaps, GAP_PRIORITY);
   let paragraph2: string;
   if (gapDim) {
-    const painTie = input.mainPain
-      ? ` Encaja con lo que me cuentas: "${input.mainPain}".`
+    // Si el empresario marcó varios dolores, citamos el primero.
+    const firstPain = input.mainPain
+      ? input.mainPain.split(",")[0].trim()
+      : "";
+    const painTie = firstPain
+      ? ` Encaja con lo que me cuentas: "${firstPain}".`
       : "";
     paragraph2 = `Al mismo tiempo, la brecha más importante que veo es que ${GAP_PHRASE[gapDim]}, ${GAP_CONSEQUENCE[gapDim]}.${painTie}`;
   } else {
