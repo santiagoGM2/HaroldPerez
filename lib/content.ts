@@ -9,7 +9,7 @@ import type { Dimension } from "./types";
 export const HAROLD = {
   name: "Harold Pérez",
   // Gancho por defecto (seguro y alineado al posicionamiento).
-  hook: "Experto en transformación empresarial e inteligencia artificial aplicada para PyMEs",
+  hook: "Experto en educación financiera y liderazgo empresarial",
   role: "Mentor de transformación empresarial",
   // Alternativas de gancho según la historia real de Harold:
   // hook: "De la quiebra al éxito: mi historia te muestra el camino",
