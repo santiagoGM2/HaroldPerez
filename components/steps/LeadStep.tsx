@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ChevronDown } from "lucide-react";
-import { COMPANY_SIZES, LEAD, PAIN_OPTIONS } from "@/lib/content";
+import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
+import { COMPANY_SIZES, LEAD } from "@/lib/content";
 import type { LeadData } from "@/lib/types";
 import { Button } from "../ui/Button";
 
@@ -30,18 +30,6 @@ export function LeadStep({
     if (key in errors) {
       setErrors((prev) => ({ ...prev, [key]: undefined }));
     }
-  }
-
-  // El dolor admite varias opciones: se guardan en mainPain unidas por ", ".
-  const selectedPains = lead.mainPain
-    ? lead.mainPain.split(", ").filter(Boolean)
-    : [];
-  function togglePain(pain: string) {
-    const set = new Set(selectedPains);
-    if (set.has(pain)) set.delete(pain);
-    else set.add(pain);
-    const next = PAIN_OPTIONS.filter((p) => set.has(p)); // conserva el orden
-    update("mainPain", next.join(", "));
   }
 
   function handleSubmit() {
@@ -142,41 +130,6 @@ export function LeadStep({
             />
           </div>
         </Field>
-
-        {/* Selección de dolores: se pueden elegir varios */}
-        <div>
-          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <p className="text-[13px] font-semibold text-navy-deep">
-              {LEAD.painQuick.label}
-            </p>
-            <span className="text-[11.5px] text-ink-faint">
-              {LEAD.painQuick.hint}
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {PAIN_OPTIONS.map((pain) => {
-              const active = selectedPains.includes(pain);
-              return (
-                <button
-                  key={pain}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => togglePain(pain)}
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-[12.5px] font-medium transition-all duration-200 ${
-                    active
-                      ? "border-navy-deep bg-navy-deep text-white shadow-soft"
-                      : "border-navy/15 bg-surface text-ink-soft hover:border-navy/35 hover:text-navy"
-                  }`}
-                >
-                  {active && (
-                    <Check className="h-3.5 w-3.5 text-gold" strokeWidth={2.6} />
-                  )}
-                  {pain}
-                </button>
-              );
-            })}
-          </div>
-        </div>
 
         <Field label={LEAD.painDetail.label}>
           <textarea

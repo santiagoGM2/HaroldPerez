@@ -9,8 +9,8 @@ import type { Dimension } from "./types";
 export const HAROLD = {
   name: "Harold Pérez",
   // Gancho por defecto (seguro y alineado al posicionamiento).
-  hook: "Experto en educación financiera y liderazgo empresarial",
-  role: "Mentor de transformación empresarial",
+  hook: "Experto empresarial con más de 20 años convirtiendo negocios en empresas escalables.",
+  role: "Tu empresa no necesita más esfuerzo. Necesita mejores sistemas.",
   // Alternativas de gancho según la historia real de Harold:
   // hook: "De la quiebra al éxito: mi historia te muestra el camino",
   // hook: "Te ayudo a convertir tu empresa en una compañía moderna, rentable y escalable",
@@ -106,15 +106,6 @@ export const COMPANY_SIZES = [
   "Más de 50 empleados",
 ];
 
-export const PAIN_OPTIONS = [
-  "No puedo desconectarme del negocio",
-  "Vendo, pero no me alcanza la plata",
-  "Mi equipo no funciona sin que yo esté",
-  "Trabajo demasiado y crezco muy poco",
-  "No entiendo mis números financieros",
-  "Mis ventas son inconsistentes",
-];
-
 export const LEAD = {
   eyebrow: "Último paso",
   title: "Estás a un paso de tu diagnóstico",
@@ -126,10 +117,6 @@ export const LEAD = {
     email: { label: "Correo electrónico", placeholder: "tucorreo@empresa.com" },
     whatsapp: { label: "WhatsApp", placeholder: "+57 300 123 4567" },
     companySize: { label: "Tamaño de tu empresa", placeholder: "Selecciona una opción" },
-  },
-  painQuick: {
-    label: "¿Qué es lo que más te duele hoy?",
-    hint: "Elige todos los que apliquen",
   },
   painDetail: {
     label: "Cuéntame un poco más",

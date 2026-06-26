@@ -67,27 +67,6 @@ export function StageMap({ current }: { current: StageKey }) {
         })}
       </div>
 
-      {/* Refuerzo: próximo salto y la meta final 4.0 */}
-      <p className="mt-6 rounded-[12px] border border-navy/[0.07] bg-cream px-4 py-3.5 text-[12.5px] leading-[1.55] text-ink-soft">
-        {current === "4.0" ? (
-          <>
-            Ya eres una <span className="font-semibold text-gold-deep">PyME 4.0</span>,
-            la cima del modelo. Ahora el reto es sostenerla y seguir creciendo con
-            estructura.
-          </>
-        ) : (
-          <>
-            Hoy eres una{" "}
-            <span className="font-semibold text-navy-deep">PyME {current}</span>. Tu
-            próximo salto es la{" "}
-            <span className="font-semibold text-navy-deep">
-              PyME {STAGE_ORDER[currentIdx + 1]}
-            </span>
-            , y el destino, como toda empresa, es siempre la{" "}
-            <span className="font-semibold text-gold-deep">PyME 4.0</span>.
-          </>
-        )}
-      </p>
     </div>
   );
 }
